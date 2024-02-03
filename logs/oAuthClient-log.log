@@ -1,0 +1,95 @@
+2024-01-31T21:39:52.348Z info: The Authorize Uri is :https://appcenter.intuit.com/connect/oauth2?client_id=AByHvXj2EXG2h9BjwsGDkA1LEWXCH6RyOoRgTVHIXJnizXQ0eC&redirect_uri=https%3A%2F%2Fa0aa-47-148-178-125.ngrok-free.app%2Fcallback&response_type=code&scope=com.intuit.quickbooks.accounting&state=intuit-test
+2024-01-31T21:39:55.393Z info: Create Token response is : {
+  "token": {
+    "realmId": "4620816365375644430",
+    "token_type": "bearer",
+    "access_token": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..pH7Y81yyk6cSHayIsua57Q.t8Msy7N-UZsd4hUAMzx2vl114CwKXBaVIXXGZAG4WKu5KtVyt_MMIJHrcy2H0ZuGLXxyx6KwVOO5SlTRe7YnrZWj6hH6V7rlTbtKLEsQRAcLyyhaAnOr0C3ujK9JyT-XlzSfICv43GxueYGSFaDsQwZJZrFx-WyPHG2hO83KwYIpvVgObts9NyAb76obnkLRdUzf0A2TKvMdmTst5T0dwPLQbVjU1Ot6Ye5rLXh6fJMPym_DH2vpFTNOnZjmQ1Dvjl8FjYMUnrUhXnYqL2car6sRo0aTpyj_YiA-E_7dcJ8UA52znZWrEvg8QXXDVGxP50G35gyrfged17bTIeNSzHn9F3Qzz4GNkj60Vsn8rS6crrSU3tIAjrOm_gIs5P84vhzsWzqJVSTLiUdy7OoxwPzuy5EzRM-H1wQPqT819ymiAGIR7EzD4MN5aLU2XdCfF7fKf92bfdn9v6oommxJZAx_v4AzikEbn1v-vReDOIQg3rjJjlo7TbnIweN2elUH0Ucmsc-VaqaiurIvCzjZHBJyFMzMFmZW8Pv0HUHI2-e246BgPdLOdLtVy1LjeGMsFH8UhDVWoN9A6BRyMp9MMtEyJyfONZyq8QiVFqKEdfu6aVJz-Jo1wXRGwpyoegcXJnmfBfxGfGkccEQjMB9wzNAVaDd92D4RmWtOpN98mDkqlMYhn8tVApEwX70GuWV9CM1fB0Dk7eI_u-Tbbz7HmnklwTOsHsNQ79tAWMCvTgfJxNNIBy-W1BZoJ3TD80Sk.EtJx-Q0XB4TEUF4Crocp9A",
+    "refresh_token": "AB11715463595JcT2gPPdlOgCwxST06DYeoDL5G6jFk3oACdba",
+    "expires_in": 3600,
+    "x_refresh_token_expires_in": 8726400,
+    "id_token": "",
+    "latency": 60000,
+    "createdAt": 1706737195392,
+    "state": "intuit-test"
+  },
+  "response": {
+    "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+    "headers": {
+      "date": "Wed, 31 Jan 2024 21:39:55 GMT",
+      "content-type": "application/json;charset=utf-8",
+      "content-length": "1028",
+      "connection": "keep-alive",
+      "x-spanid": "2fbd8311-0a91-7809-d19b-842185a334fa",
+      "x-amzn-trace-id": "Root=1-65babe2b-0fb474810ad4ac2d50cccae4",
+      "x-content-type-options": "nosniff",
+      "server": "istio-envoy",
+      "cache-control": "no-cache, no-store",
+      "pragma": "no-cache",
+      "x-frame-options": "SAMEORIGIN",
+      "x-xss-protection": "1; mode=block",
+      "x-envoy-upstream-service-time": "27",
+      "strict-transport-security": "max-age=31536000",
+      "intuit_tid": "1-65babe2b-0fb474810ad4ac2d50cccae4",
+      "x-request-id": "1-65babe2b-0fb474810ad4ac2d50cccae4"
+    },
+    "body": "{\"x_refresh_token_expires_in\":8726400,\"access_token\":\"eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..pH7Y81yyk6cSHayIsua57Q.t8Msy7N-UZsd4hUAMzx2vl114CwKXBaVIXXGZAG4WKu5KtVyt_MMIJHrcy2H0ZuGLXxyx6KwVOO5SlTRe7YnrZWj6hH6V7rlTbtKLEsQRAcLyyhaAnOr0C3ujK9JyT-XlzSfICv43GxueYGSFaDsQwZJZrFx-WyPHG2hO83KwYIpvVgObts9NyAb76obnkLRdUzf0A2TKvMdmTst5T0dwPLQbVjU1Ot6Ye5rLXh6fJMPym_DH2vpFTNOnZjmQ1Dvjl8FjYMUnrUhXnYqL2car6sRo0aTpyj_YiA-E_7dcJ8UA52znZWrEvg8QXXDVGxP50G35gyrfged17bTIeNSzHn9F3Qzz4GNkj60Vsn8rS6crrSU3tIAjrOm_gIs5P84vhzsWzqJVSTLiUdy7OoxwPzuy5EzRM-H1wQPqT819ymiAGIR7EzD4MN5aLU2XdCfF7fKf92bfdn9v6oommxJZAx_v4AzikEbn1v-vReDOIQg3rjJjlo7TbnIweN2elUH0Ucmsc-VaqaiurIvCzjZHBJyFMzMFmZW8Pv0HUHI2-e246BgPdLOdLtVy1LjeGMsFH8UhDVWoN9A6BRyMp9MMtEyJyfONZyq8QiVFqKEdfu6aVJz-Jo1wXRGwpyoegcXJnmfBfxGfGkccEQjMB9wzNAVaDd92D4RmWtOpN98mDkqlMYhn8tVApEwX70GuWV9CM1fB0Dk7eI_u-Tbbz7HmnklwTOsHsNQ79tAWMCvTgfJxNNIBy-W1BZoJ3TD80Sk.EtJx-Q0XB4TEUF4Crocp9A\",\"token_type\":\"bearer\",\"refresh_token\":\"AB11715463595JcT2gPPdlOgCwxST06DYeoDL5G6jFk3oACdba\",\"expires_in\":3600}",
+    "status": 200,
+    "statusText": "OK"
+  },
+  "body": "{\"x_refresh_token_expires_in\":8726400,\"access_token\":\"eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..pH7Y81yyk6cSHayIsua57Q.t8Msy7N-UZsd4hUAMzx2vl114CwKXBaVIXXGZAG4WKu5KtVyt_MMIJHrcy2H0ZuGLXxyx6KwVOO5SlTRe7YnrZWj6hH6V7rlTbtKLEsQRAcLyyhaAnOr0C3ujK9JyT-XlzSfICv43GxueYGSFaDsQwZJZrFx-WyPHG2hO83KwYIpvVgObts9NyAb76obnkLRdUzf0A2TKvMdmTst5T0dwPLQbVjU1Ot6Ye5rLXh6fJMPym_DH2vpFTNOnZjmQ1Dvjl8FjYMUnrUhXnYqL2car6sRo0aTpyj_YiA-E_7dcJ8UA52znZWrEvg8QXXDVGxP50G35gyrfged17bTIeNSzHn9F3Qzz4GNkj60Vsn8rS6crrSU3tIAjrOm_gIs5P84vhzsWzqJVSTLiUdy7OoxwPzuy5EzRM-H1wQPqT819ymiAGIR7EzD4MN5aLU2XdCfF7fKf92bfdn9v6oommxJZAx_v4AzikEbn1v-vReDOIQg3rjJjlo7TbnIweN2elUH0Ucmsc-VaqaiurIvCzjZHBJyFMzMFmZW8Pv0HUHI2-e246BgPdLOdLtVy1LjeGMsFH8UhDVWoN9A6BRyMp9MMtEyJyfONZyq8QiVFqKEdfu6aVJz-Jo1wXRGwpyoegcXJnmfBfxGfGkccEQjMB9wzNAVaDd92D4RmWtOpN98mDkqlMYhn8tVApEwX70GuWV9CM1fB0Dk7eI_u-Tbbz7HmnklwTOsHsNQ79tAWMCvTgfJxNNIBy-W1BZoJ3TD80Sk.EtJx-Q0XB4TEUF4Crocp9A\",\"token_type\":\"bearer\",\"refresh_token\":\"AB11715463595JcT2gPPdlOgCwxST06DYeoDL5G6jFk3oACdba\",\"expires_in\":3600}",
+  "json": {
+    "x_refresh_token_expires_in": 8726400,
+    "access_token": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..pH7Y81yyk6cSHayIsua57Q.t8Msy7N-UZsd4hUAMzx2vl114CwKXBaVIXXGZAG4WKu5KtVyt_MMIJHrcy2H0ZuGLXxyx6KwVOO5SlTRe7YnrZWj6hH6V7rlTbtKLEsQRAcLyyhaAnOr0C3ujK9JyT-XlzSfICv43GxueYGSFaDsQwZJZrFx-WyPHG2hO83KwYIpvVgObts9NyAb76obnkLRdUzf0A2TKvMdmTst5T0dwPLQbVjU1Ot6Ye5rLXh6fJMPym_DH2vpFTNOnZjmQ1Dvjl8FjYMUnrUhXnYqL2car6sRo0aTpyj_YiA-E_7dcJ8UA52znZWrEvg8QXXDVGxP50G35gyrfged17bTIeNSzHn9F3Qzz4GNkj60Vsn8rS6crrSU3tIAjrOm_gIs5P84vhzsWzqJVSTLiUdy7OoxwPzuy5EzRM-H1wQPqT819ymiAGIR7EzD4MN5aLU2XdCfF7fKf92bfdn9v6oommxJZAx_v4AzikEbn1v-vReDOIQg3rjJjlo7TbnIweN2elUH0Ucmsc-VaqaiurIvCzjZHBJyFMzMFmZW8Pv0HUHI2-e246BgPdLOdLtVy1LjeGMsFH8UhDVWoN9A6BRyMp9MMtEyJyfONZyq8QiVFqKEdfu6aVJz-Jo1wXRGwpyoegcXJnmfBfxGfGkccEQjMB9wzNAVaDd92D4RmWtOpN98mDkqlMYhn8tVApEwX70GuWV9CM1fB0Dk7eI_u-Tbbz7HmnklwTOsHsNQ79tAWMCvTgfJxNNIBy-W1BZoJ3TD80Sk.EtJx-Q0XB4TEUF4Crocp9A",
+    "token_type": "bearer",
+    "refresh_token": "AB11715463595JcT2gPPdlOgCwxST06DYeoDL5G6jFk3oACdba",
+    "expires_in": 3600
+  },
+  "intuit_tid": "1-65babe2b-0fb474810ad4ac2d50cccae4"
+}
+2024-01-31T21:39:55.487Z error: Create Token () threw an exception : {
+  "authResponse": {
+    "token": {
+      "realmId": "",
+      "token_type": "bearer",
+      "access_token": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..pH7Y81yyk6cSHayIsua57Q.t8Msy7N-UZsd4hUAMzx2vl114CwKXBaVIXXGZAG4WKu5KtVyt_MMIJHrcy2H0ZuGLXxyx6KwVOO5SlTRe7YnrZWj6hH6V7rlTbtKLEsQRAcLyyhaAnOr0C3ujK9JyT-XlzSfICv43GxueYGSFaDsQwZJZrFx-WyPHG2hO83KwYIpvVgObts9NyAb76obnkLRdUzf0A2TKvMdmTst5T0dwPLQbVjU1Ot6Ye5rLXh6fJMPym_DH2vpFTNOnZjmQ1Dvjl8FjYMUnrUhXnYqL2car6sRo0aTpyj_YiA-E_7dcJ8UA52znZWrEvg8QXXDVGxP50G35gyrfged17bTIeNSzHn9F3Qzz4GNkj60Vsn8rS6crrSU3tIAjrOm_gIs5P84vhzsWzqJVSTLiUdy7OoxwPzuy5EzRM-H1wQPqT819ymiAGIR7EzD4MN5aLU2XdCfF7fKf92bfdn9v6oommxJZAx_v4AzikEbn1v-vReDOIQg3rjJjlo7TbnIweN2elUH0Ucmsc-VaqaiurIvCzjZHBJyFMzMFmZW8Pv0HUHI2-e246BgPdLOdLtVy1LjeGMsFH8UhDVWoN9A6BRyMp9MMtEyJyfONZyq8QiVFqKEdfu6aVJz-Jo1wXRGwpyoegcXJnmfBfxGfGkccEQjMB9wzNAVaDd92D4RmWtOpN98mDkqlMYhn8tVApEwX70GuWV9CM1fB0Dk7eI_u-Tbbz7HmnklwTOsHsNQ79tAWMCvTgfJxNNIBy-W1BZoJ3TD80Sk.EtJx-Q0XB4TEUF4Crocp9A",
+      "refresh_token": "AB11715463595JcT2gPPdlOgCwxST06DYeoDL5G6jFk3oACdba",
+      "expires_in": 3600,
+      "x_refresh_token_expires_in": 8726400,
+      "id_token": "",
+      "latency": 60000,
+      "createdAt": 1706737195392,
+      "state": "intuit-test"
+    },
+    "response": {
+      "url": "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer",
+      "headers": {
+        "date": "Wed, 31 Jan 2024 21:39:55 GMT",
+        "content-type": "application/json;charset=utf-8",
+        "content-length": "27",
+        "connection": "keep-alive",
+        "x-spanid": "9aed637d-ad42-78d1-9f7c-e62d1066e63b",
+        "x-amzn-trace-id": "Root=1-65babe2b-73d6a49754538f49457e48a4",
+        "x-content-type-options": "nosniff",
+        "server": "istio-envoy",
+        "cache-control": "no-cache, no-store",
+        "pragma": "no-cache",
+        "x-envoy-upstream-service-time": "2",
+        "strict-transport-security": "max-age=31536000",
+        "intuit_tid": "1-65babe2b-73d6a49754538f49457e48a4",
+        "x-request-id": "1-65babe2b-73d6a49754538f49457e48a4"
+      },
+      "body": "{\"error\":\"invalid_request\"}",
+      "status": 400,
+      "statusText": "Bad Request"
+    },
+    "body": "{\"error\":\"invalid_request\"}",
+    "json": {
+      "error": "invalid_request"
+    },
+    "intuit_tid": "1-65babe2b-73d6a49754538f49457e48a4"
+  },
+  "originalMessage": "Response has an Error",
+  "error": "invalid_request",
+  "error_description": "Bad Request",
+  "intuit_tid": "1-65babe2b-73d6a49754538f49457e48a4"
+}
