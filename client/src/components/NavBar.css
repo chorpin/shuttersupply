@@ -1,0 +1,31 @@
+/* 在 NavBar.css 文件中 */
+.navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-logo .logo {
+    height: 40px; /* 根据你的logo大小调整 */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #aaa;
+  }
+  
