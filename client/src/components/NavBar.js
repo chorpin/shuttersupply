@@ -6,18 +6,15 @@ import './NavBar.css'; // 引入CSS样式
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <Link to="/" className="nav-logo">
-        <img src={require('../assets/images/logo.jpg').default} alt="Logo" className="logo" />
-      </Link>
       <ul className="nav-links">
         <li>
           <Link to="/" className="nav-link">Home</Link>
         </li>
         <li>
-          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/Inventory" className="nav-link">Inventory</Link>
         </li>
         <li>
-          <Link to="/contact" className="nav-link">Contact</Link>
+          <Link to="/Merchants" className="nav-link">Merchants</Link>
         </li>
       </ul>
     </nav>

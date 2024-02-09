@@ -1,6 +1,6 @@
 // 在 Sidebar.js 文件中
 import React, { useState } from 'react';
-import './Sidebar.css'; // 引入CSS样式
+import './SideBar.css'; // 引入CSS样式
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {

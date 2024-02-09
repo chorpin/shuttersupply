@@ -1,0 +1,32 @@
+/* 在 src/components/Card.css 中 */
+
+.card {
+    background-color: white; /* 设置背景颜色 */
+    border-radius: 8px; /* 设置边框圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果，使其看起来像是凸出来的 */
+    padding: 20px; /* 添加一些内边距 */
+    margin: 20px 0; /* 添加一些外边距以与其他元素分隔 */
+    width: 60%; /* 默认宽度为容器的80% */
+    max-width: 500px; /* 在大屏幕上不超过600px */
+    color: #40A2E3; /* 设置文本颜色 */
+    font-weight: bold; /* 设置文本字体为粗体 */
+    transition: color 0.3s; /* 添加颜色变化的过渡效果 */
+  }
+.logIn{
+    height: 150px; /* 设置一个固定高度使其变成长方形 */
+  display: flex; /* 使用Flexbox布局 */
+  justify-content: center; /* 水平居中子元素 */
+  align-items: center; /* 垂直居中子元素 */
+  margin: 0 auto; /* 居中Card */
+  width: 60%; /* 调整宽度 */
+  max-width: 500px; /* 最大宽度限制 */
+  margin-top: 60px;
+  font-size: 24px;
+  
+}
+.card:hover{
+    cursor: pointer;
+    text-shadow: 0 0 8px #007BFF; /* 添加发光效果，可以调整颜色和模糊半径 */
+}
+  
+  
