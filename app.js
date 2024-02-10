@@ -180,21 +180,48 @@ app.get('/getCompanyInfo', async function (req, res) {
   }
 });
 
-app.get('/createAnInvoice', async function (req, res) {
+app.post('/createItem', async function (req, res) {
   try {
-    
-
     const companyID = oauthClient.getToken().realmId;
     const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
 
-    // 在 token 创建后进行 API 调用
-    const apiResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/companyinfo/${companyID}` });
+    // 调整后的构建创建Item的请求体，以满足创建库存项目的需要
+    const itemData = {
+      "TrackQtyOnHand": true, 
+      "Name": "WFD-Garden Supplies", // 项目名称，确保唯一
+      "QtyOnHand": 10, // 手头上的库存数量
+      "InvStartDate": "2015-01-01", // 库存开始日期
+      "Type": "Inventory", // 项目类型为库存
+      "IncomeAccountRef": {
+        "value": "79" // 收入账户引用ID
+      },
+      "AssetAccountRef": {
+        "value": "81" // 资产账户引用ID
+      },
+      "ExpenseAccountRef": {
+        "value": "80" // 费用账户引用ID
+      }
+      // 根据需要添加其他字段，如Description, Price等
+    };
+
+    // 进行API调用以创建Item
+    const apiResponse = await oauthClient.makeApiCall({
+      url: `${url}/v3/company/${companyID}/item?minorversion=70`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(itemData)
+    });
+
+    // 发送API响应回客户端
     res.send(JSON.parse(apiResponse.text()));
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 
 /**

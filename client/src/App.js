@@ -30,14 +30,18 @@ function App() {
     <div className="App">
       <div className='content'>
         <NavBar/>
-        <div className='card-lists'>
+        
         <Routes>
-          <Route exact path="/" element={isAuthenticated?(<Card>Create Invoice</Card>) : 
+          <Route exact path="/" element={isAuthenticated?
+            (
+              <div className='card-lists'>
+                <Card >Create Invoice</Card>
+              </div>  ) : 
           (<Card onClick={handleLogin} cardType='logIn'>Auto Log In</Card>)
           }/>
           <Route path="/callbackfront" element={<CallbackHandler/>}/>
         </Routes>
-        </div>
+        
        
         
       </div>
