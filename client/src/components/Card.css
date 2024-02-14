@@ -10,7 +10,7 @@
     max-width: 500px; /* 在大屏幕上不超过600px */
     color: #40A2E3; /* 设置文本颜色 */
     font-weight: bold; /* 设置文本字体为粗体 */
-    transition: color 0.3s; /* 添加颜色变化的过渡效果 */
+    transition: color 0.3s, text-shadow 0.3s ease-in-out; /* 更新这里 */
   }
 .logIn{
     height: 150px; /* 设置一个固定高度使其变成长方形 */
@@ -26,7 +26,7 @@
 }
 .card:hover{
     cursor: pointer;
-    text-shadow: 0 0 8px #007BFF; /* 添加发光效果，可以调整颜色和模糊半径 */
+    text-shadow: 0 0 8px #00ff7b; /* 添加发光效果，可以调整颜色和模糊半径 */
 }
   
   

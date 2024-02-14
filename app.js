@@ -186,23 +186,7 @@ app.post('/createItem', async function (req, res) {
     const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
 
     // 调整后的构建创建Item的请求体，以满足创建库存项目的需要
-    const itemData = {
-      "TrackQtyOnHand": true, 
-      "Name": "WFD-Garden Supplies", // 项目名称，确保唯一
-      "QtyOnHand": 10, // 手头上的库存数量
-      "InvStartDate": "2015-01-01", // 库存开始日期
-      "Type": "Inventory", // 项目类型为库存
-      "IncomeAccountRef": {
-        "value": "79" // 收入账户引用ID
-      },
-      "AssetAccountRef": {
-        "value": "81" // 资产账户引用ID
-      },
-      "ExpenseAccountRef": {
-        "value": "80" // 费用账户引用ID
-      }
-      // 根据需要添加其他字段，如Description, Price等
-    };
+    const itemData = req.body
 
     // 进行API调用以创建Item
     const apiResponse = await oauthClient.makeApiCall({

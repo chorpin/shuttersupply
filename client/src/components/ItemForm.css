@@ -1,0 +1,65 @@
+.form-container {
+    position: fixed; /* 使表格相对于视口固定位置 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 居中表格 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    background-color: white; /* 背景颜色 */
+    border-radius: 8px; /* 边框圆角 */
+   overflow: hidden;
+    width: 500px; /* 表格宽度 */
+  }
+
+.item-form{
+  display:flex;
+  flex-direction: column;
+  row-gap: 7px;
+  margin-top: 8px;
+  margin-bottom: 7px;
+  padding-left: 15px;
+  padding-bottom: 12px;
+  padding-right: 15px;
+}
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px; /* 根据需要调整 */
+  font-size: 30px; /* 标题字体大小 */
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold;
+  background-color: #BBE2EC;
+  padding-bottom: 2px;
+}
+
+.close-button {
+  font-size: 28px; /* 叉号大小 */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.close-button:hover{
+  text-shadow: 0 0 8px #d77968; /* 添加发光效果，可以调整颜色和模糊半径 */
+}
+
+.input-group{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.input-group label {
+  margin-left: 5px;
+  margin-right: 10px; /* 标签和输入框之间的间距 */
+  font-weight: bold; /* 设置文本字体为粗体 */
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.input-group input {
+  padding: 4px; /* 输入框内边距 */
+  border: 1px solid #ccc; /* 边框样式 */
+  border-radius: 4px; /* 输入框边框圆角 */
+  flex-grow: 1;
+}
+  

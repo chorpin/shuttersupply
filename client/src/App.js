@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import './App.css';
 import GetCompanyInfo from './components/GetCompanyInfo';
 import Login from './components/Login'
@@ -11,7 +11,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from './actions/authActions';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { handleLogin } from './services/loginService';
+import {handleCreateItem} from './services/createItem'
+import ItemForm from './components/ItemForm'
 function App() {
+  const [showItemForm,setShowItemForm] =useState(false)
   
   const {isAuthenticated,jwtToken} =useSelector((state)=>{
     console.log('state:',state)
@@ -30,12 +33,16 @@ function App() {
     <div className="App">
       <div className='content'>
         <NavBar/>
-        
+        {showItemForm&&<ItemForm onClose={()=>{setShowItemForm(false)}}/>}
         <Routes>
-          <Route exact path="/" element={isAuthenticated?
+          <Route exact path="/" element={true?
             (
               <div className='card-lists'>
                 <Card >Create Invoice</Card>
+                <Card onClick={()=>{
+                  handleCreateItem()
+                  setShowItemForm(true)
+                  }}>Create Item</Card>
               </div>  ) : 
           (<Card onClick={handleLogin} cardType='logIn'>Auto Log In</Card>)
           }/>

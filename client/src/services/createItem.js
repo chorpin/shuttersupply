@@ -1,12 +1,33 @@
+
+
 const handleCreateItem = async (itemData) => {
     try {
       // 向服务器端发送请求以创建新的Item
+      const newItemData = {
+        "Name": "WFD Sample Item",
+        "Type": "Service",
+       
+        // 根据QuickBooks API的要求添加更多字段
+      };
+      /**
+       * 
+       * 
+       *  const newItemData = {
+        "Name": "WFD Sample Item",
+        "Type": "Service",
+        "IncomeAccountRef": {
+          "value": "79"
+        },
+        // 根据QuickBooks API的要求添加更多字段
+      };
+       * 
+       */
       const response = await fetch('/createItem', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(itemData),
+        body: JSON.stringify(newItemData),
       });
   
       if (response.ok) {
