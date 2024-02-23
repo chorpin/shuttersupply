@@ -33,16 +33,17 @@ function App() {
     <div className="App">
       <div className='content'>
         <NavBar/>
-        {showItemForm&&<ItemForm onClose={()=>{setShowItemForm(false)}}/>}
+        {showItemForm&&<ItemForm onClose={()=>{setShowItemForm(false)}} onSubmit={handleCreateItem}/>}
         <Routes>
-          <Route exact path="/" element={true?
+          <Route exact path="/" element={isAuthenticated?
             (
               <div className='card-lists'>
                 <Card >Create Invoice</Card>
                 <Card onClick={()=>{
-                  handleCreateItem()
+                  //handleCreateItem()
                   setShowItemForm(true)
                   }}>Create Item</Card>
+                <Card>Create Customer</Card>
               </div>  ) : 
           (<Card onClick={handleLogin} cardType='logIn'>Auto Log In</Card>)
           }/>
