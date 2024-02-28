@@ -15,7 +15,7 @@ const OAuthClient = require('intuit-oauth');
 const bodyParser = require('body-parser');
 var crypto = require('crypto');
 const ngrok = process.env.NGROK_ENABLED === 'true' ? require('ngrok') : null;
-var frontendBaseUrl;
+var frontendBaseUrl='https://wfdapp.shutter.supply'
 /**
  * Configure View and Handlebars
  */
@@ -230,9 +230,9 @@ console.log('NGROK_ENABLED:', process.env.NGROK_ENABLED);
  * Start server on HTTP (will use ngrok for HTTPS forwarding)
  */
 const server = app.listen(process.env.PORT || 8000, () => {
-  console.log(`💻 Server listening on port ${server.address().port}`);
+  //console.log(`💻 Server listening on port ${server.address().port}`);
   if (!ngrok) {
-    redirectUri = `${server.address().port}` + '/callback';
+    redirectUri = 'https://wfdapp.shutter.supply/callback';
     console.log(
       `💳  Step 1 : Paste this URL in your browser : ` +
         'http://localhost:' +
