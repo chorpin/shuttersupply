@@ -44,6 +44,7 @@ function App() {
                   setShowItemForm(true)
                   }}>Create Item</Card>
                 <Card>Create Customer</Card>
+                <Card onClick={()=>{}}>Get Company Info</Card>
               </div>  ) : 
           (<Card onClick={handleLogin} cardType='logIn'>Auto Log In</Card>)
           }/>

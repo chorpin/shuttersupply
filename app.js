@@ -233,6 +233,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
   //console.log(`💻 Server listening on port ${server.address().port}`);
   if (!ngrok) {
     redirectUri = 'https://wfdapp.shutter.supply/callback';
+    console.log('redirectUri--->:',redirectUri)
     console.log(
       `💳  Step 1 : Paste this URL in your browser : ` +
         'http://localhost:' +
