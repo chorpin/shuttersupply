@@ -71,7 +71,7 @@ app.get('/authUri', urlencodedParser, function (req, res) {
 
 
 // 添加用于处理Webhooks通知的路由
-app.post('/webhook/invoices', function(req, res) {
+app.post('/webhook/invoices', async function(req, res) {
   console.log('------Here is the webhook-----')
   var webhookPayload = JSON.stringify(req.body);
   var signature = req.get('intuit-signature');
@@ -86,7 +86,18 @@ app.post('/webhook/invoices', function(req, res) {
   if (signature === hash) {
       // Log the valid webhook payload
       const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
+      const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
       console.log("Valid Webhook invoiceId notification received:", invoiceId);
+      console.log("Valid Webhook invoiceOperation:", invoiceOperation);
+      
+
+      //
+      const companyID = oauthClient.getToken().realmId;
+      const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
+  
+      // 在 token 创建后进行 API 调用
+      const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
+      console.log('apiInvoiceResponse:',apiInvoiceResponse)
 
       // Here you can perform any action needed based on the webhook data
       // For example, updating a database, logging to a file, etc.
