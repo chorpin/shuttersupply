@@ -12,6 +12,7 @@ import { login, logout } from './actions/authActions';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { handleLogin } from './services/loginService';
 import {handleCreateItem} from './services/createItem'
+import {handleGetCompanyInfo} from './services/getCompanyInfo'
 import ItemForm from './components/ItemForm'
 function App() {
   const [showItemForm,setShowItemForm] =useState(false)
@@ -44,7 +45,7 @@ function App() {
                   setShowItemForm(true)
                   }}>Create Item</Card>
                 <Card>Create Customer</Card>
-                <Card onClick={()=>{}}>Get Company Info</Card>
+                <Card onClick={handleGetCompanyInfo}>Get Company Info</Card>
               </div>  ) : 
           (<Card onClick={handleLogin} cardType='logIn'>Auto Log In</Card>)
           }/>
