@@ -71,7 +71,7 @@ app.get('/authUri', urlencodedParser, function (req, res) {
 
 
 // 添加用于处理Webhooks通知的路由
-app.post('/webhook', function(req, res) {
+app.post('/webhook/invoices', function(req, res) {
   console.log('------Here is the webhook-----')
   var webhookPayload = JSON.stringify(req.body);
   var signature = req.get('intuit-signature');
@@ -85,7 +85,8 @@ app.post('/webhook', function(req, res) {
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
       // Log the valid webhook payload
-      console.log("Valid Webhook notification received:", webhookPayload);
+      const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
+      console.log("Valid Webhook invoiceId notification received:", invoiceId);
 
       // Here you can perform any action needed based on the webhook data
       // For example, updating a database, logging to a file, etc.
