@@ -113,7 +113,7 @@ app.post('/webhook/invoices', async function(req, res) {
               console.log(`Unit Price: ${itemDetails.UnitPrice}`);
               // 如果需要，这里也可以添加对 SKU 的处理，但是示例中的响应没有包含 SKU 信息
           }
-
+        })
       // Here you can perform any action needed based on the webhook data
       // For example, updating a database, logging to a file, etc.
 
