@@ -99,6 +99,21 @@ app.post('/webhook/invoices', async function(req, res) {
       const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
       console.log('apiInvoiceResponse:',apiInvoiceResponse)
 
+      const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
+
+      // 假设每个 Line 中的 SalesItemLineDetail 包含您需要的信息
+      console.log('Invoice Items Details:');
+      invoiceDetails.Invoice.Line.forEach(line => {
+          // 检查 DetailType 确保它是 SalesItemLineDetail 类型
+          if (line.DetailType === 'SalesItemLineDetail') {
+              const itemDetails = line.SalesItemLineDetail;
+              console.log(`Item: ${itemDetails.ItemRef.name}`);
+              console.log(`Description: ${line.Description}`);
+              console.log(`Quantity: ${itemDetails.Qty}`);
+              console.log(`Unit Price: ${itemDetails.UnitPrice}`);
+              // 如果需要，这里也可以添加对 SKU 的处理，但是示例中的响应没有包含 SKU 信息
+          }
+
       // Here you can perform any action needed based on the webhook data
       // For example, updating a database, logging to a file, etc.
 
