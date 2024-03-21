@@ -14,6 +14,7 @@ const path = require('path');
 const OAuthClient = require('intuit-oauth');
 const bodyParser = require('body-parser');
 var crypto = require('crypto');
+const pool = require('./database/db');
 const ngrok = process.env.NGROK_ENABLED === 'true' ? require('ngrok') : null;
 var frontendBaseUrl='https://wfdapp.shutter.supply'
 /**
@@ -124,8 +125,16 @@ app.post('/webhook/invoices', async function(req, res) {
       return res.status(401).send('FORBIDDEN');
   }
 });
-
-
+// 数据库是否正常连接
+app.get('/products', async (req, res) => {
+  try {
+    const queryResult = await pool.query('SELECT * FROM shuttersupply.product');
+    res.json(queryResult.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 
 /**
