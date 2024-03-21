@@ -97,7 +97,7 @@ app.post('/webhook/invoices', async function(req, res) {
   
       // 在 token 创建后进行 API 调用
       const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
-      console.log('apiInvoiceResponse:',apiInvoiceResponse)
+      //console.log('apiInvoiceResponse:',apiInvoiceResponse)
 
       const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
 
