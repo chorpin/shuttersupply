@@ -128,6 +128,7 @@ app.post('/webhook/invoices', async function(req, res) {
 // 数据库是否正常连接
 app.get('/products', async (req, res) => {
   try {
+    console.log('Fetching the data.....')
     const queryResult = await pool.query('SELECT * FROM shuttersupply.product');
     res.json(queryResult.rows);
   } catch (error) {
