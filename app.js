@@ -130,6 +130,7 @@ app.get('/products', async (req, res) => {
   try {
     console.log('Fetching the data.....')
     const queryResult = await pool.query('SELECT * FROM shuttersupply.product');
+    console.log('queryResult--->',queryResult)
     res.json(queryResult.rows);
   } catch (error) {
     console.error(error);
