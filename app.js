@@ -129,6 +129,7 @@ app.post('/webhook/invoices', async function(req, res) {
 app.get('/products', async (req, res) => {
   try {
     console.log('Fetching the data.....')
+    console.log('pool:--->',pool)
     const queryResult = await pool.query('SELECT * FROM shuttersupply.product LIMIT 5');
     console.log('queryResult--->',queryResult)
     res.json(queryResult.rows);
