@@ -108,6 +108,7 @@ app.post('/webhook/invoices', async function(req, res) {
           // 检查 DetailType 确保它是 SalesItemLineDetail 类型
           if (line.DetailType === 'SalesItemLineDetail') {
               const itemDetails = line.SalesItemLineDetail;
+              console.log(itemDetails)
               console.log(`Item: ${itemDetails.ItemRef.name}`);
               console.log(`Description: ${line.Description}`);
               console.log(`Quantity: ${itemDetails.Qty}`);
