@@ -108,18 +108,13 @@ app.post('/webhook/invoices', async function(req, res) {
           // 检查 DetailType 确保它是 SalesItemLineDetail 类型
           if (line.DetailType === 'SalesItemLineDetail') {
               const itemDetails = line.SalesItemLineDetail;
-              const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}` });
+              const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
               const itemData = JSON.parse(itemResponse.text());
                 // 假设 SKU 信息在响应的某个字段中
               console.log('itemResponse',itemResponse)
               console.log('itemData',itemData)
               console.log(`SKU: ${itemData.Item.Sku}`); // 根据实际响应结构调整路径
-              //console.log(itemDetails)
-              //console.log(`Item: ${itemDetails.ItemRef.name}`);
-              //console.log(`Description: ${line.Description}`);
-              //console.log(`Quantity: ${itemDetails.Qty}`);
-              //console.log(`Unit Price: ${itemDetails.UnitPrice}`);
-              // 如果需要，这里也可以添加对 SKU 的处理，但是示例中的响应没有包含 SKU 信息
+              
           }
         })
       // Here you can perform any action needed based on the webhook data
