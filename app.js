@@ -111,6 +111,8 @@ app.post('/webhook/invoices', async function(req, res) {
               const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}` });
               const itemData = JSON.parse(itemResponse.text());
                 // 假设 SKU 信息在响应的某个字段中
+              console.log('itemResponse',itemResponse)
+              console.log('itemData',itemData)
               console.log(`SKU: ${itemData.Item.Sku}`); // 根据实际响应结构调整路径
               //console.log(itemDetails)
               //console.log(`Item: ${itemDetails.ItemRef.name}`);
