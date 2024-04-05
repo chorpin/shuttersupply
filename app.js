@@ -86,6 +86,7 @@ app.post('/webhook/invoices', async function(req, res) {
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
       // Log the valid webhook payload
+      console.log("eq.body.eventNotifications[0].dataChangeEvent.entities[0]",eq.body.eventNotifications[0].dataChangeEvent.entities[0])
       const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
       const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
       console.log("Valid Webhook invoiceId notification received:", invoiceId);
@@ -110,10 +111,8 @@ app.post('/webhook/invoices', async function(req, res) {
               const itemDetails = line.SalesItemLineDetail;
               const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
               const itemData = JSON.parse(itemResponse.text());
-                // 假设 SKU 信息在响应的某个字段中
-              console.log('itemResponse',itemResponse)
-              console.log('itemData',itemData)
-              console.log(`SKU: ${itemData.Item.Sku}`); // 根据实际响应结构调整路径
+              const SKU = itemData.Item.Sku
+              
               
           }
         })
