@@ -86,7 +86,7 @@ app.post('/webhook/invoices', async function(req, res) {
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
       // Log the valid webhook payload
-      console.log("eq.body.eventNotifications[0].dataChangeEvent.entities[0]",eq.body.eventNotifications[0].dataChangeEvent.entities[0])
+      console.log("req.body.eventNotifications[0].dataChangeEvent.entities[0]",req.body.eventNotifications[0].dataChangeEvent.entities[0])
       const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
       const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
       console.log("Valid Webhook invoiceId notification received:", invoiceId);
