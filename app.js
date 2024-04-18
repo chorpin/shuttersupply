@@ -8,6 +8,7 @@ require('dotenv').config();
  * @type {*|createApplication}
  */
 const express = require('express');
+const enhanceRequestWithCompanyDetails=require('./middlewares/enhanceRequest')
 const jwt =require('jsonwebtoken')
 const app = express();
 const path = require('path');
@@ -72,7 +73,7 @@ app.get('/authUri', urlencodedParser, function (req, res) {
 
 
 // 添加用于处理Webhooks通知的路由
-app.post('/webhook/invoices', async function(req, res) {
+app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(req, res) {
   console.log('------Here is the webhook-----')
   var webhookPayload = JSON.stringify(req.body);
   var signature = req.get('intuit-signature');
@@ -94,9 +95,11 @@ app.post('/webhook/invoices', async function(req, res) {
       console.log("today is 4.15")
 
       //
-      const companyID = oauthClient.getToken().realmId;
-      const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
-  
+      // const companyID = oauthClient.getToken().realmId;
+      // const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
+      const {companyID,url}=req.companyDetails
+
+
       // 在 token 创建后进行 API 调用
       const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
       //console.log('apiInvoiceResponse:',apiInvoiceResponse)
