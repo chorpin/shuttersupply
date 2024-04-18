@@ -2,11 +2,7 @@ const OAuthClient = require('intuit-oauth');
 
 function enhanceRequestWithCompanyDetails(req, res, next) {
     try {
-        if(!globalMagic) {
-            console.log("can not see")
-        }else{
-            console.log(globalMagic)
-        }
+       
         if(!req.oauthClient) {
             throw new Error('OAuth Client not initializd yet.')
         }
