@@ -36,6 +36,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
  */
 let oauth2_token_json = null;
 let redirectUri = '';
+let globalMagic = 'the is from the app scale,'
 
 /**
  * Instantiate new Client
