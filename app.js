@@ -54,6 +54,21 @@ app.get('/', function (req, res) {
 /**
  * Get the AuthorizeUri
  */
+
+
+app.use((req, res, next) => {
+  if (!req.oauthClient) {
+      req.oauthClient = new OAuthClient({
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        environment: process.env.ENVIRONMENT,
+        redirectUri: redirectUri
+      });
+  }
+  next();
+});
+
+
 app.get('/authUri', urlencodedParser, function (req, res) {
  oauthClient = new OAuthClient({
     clientId: process.env.CLIENT_ID,

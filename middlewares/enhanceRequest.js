@@ -1,13 +1,13 @@
 function enhanceRequestWithCompanyDetails(req, res, next) {
     try {
 
-        if(!oauthClient) {
+        if(!req.oauthClient) {
             throw new Error('OAuth Client not initializd yet.')
         }
 
         //const oauthClient = req.session.oauthClient;
-        const companyID = oauthClient.getToken().realmId;
-        const url = oauthClient.environment === 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
+        const companyID = req.oauthClient.getToken().realmId;
+        const url = req.oauthClient.environment === 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
 
         // Attach the company details to the request object
         req.companyDetails = { companyID, url };
