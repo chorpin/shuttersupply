@@ -1,3 +1,5 @@
+const OAuthClient = require('intuit-oauth');
+
 function enhanceRequestWithCompanyDetails(req, res, next) {
     try {
 
