@@ -100,10 +100,11 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
   }
 
   // Verify the payload with the intuit-signature hash
+  console.log('req.companyDetails:',req.companyDetails)
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
       const {companyID,url}=req.companyDetails
-      console.log('req.companyDetails:',req.companyDetails)
+      
 
       const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
      
@@ -111,7 +112,7 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
         const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
         const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
         
-        console.log("today is 4.15")      
+        console.log("today is 4.22")      
         const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
 
         const invoiceDetails = JSON.parse(apiInvoiceResponse.text());

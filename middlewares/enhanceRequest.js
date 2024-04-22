@@ -15,6 +15,7 @@ function enhanceRequestWithCompanyDetails(req, res, next) {
         req.companyDetails = { companyID, url };
         console.log('went through the middleware enhanceRequestWithCompanyDetails');
         // Call the next middleware/route handler
+        console.log('middleware req.companyDetails:',req.companyDetails)
         next();
     } catch (error) {
         console.error("Failed to enhance request with company details:", error);
