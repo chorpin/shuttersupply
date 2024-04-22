@@ -102,23 +102,20 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
   // Verify the payload with the intuit-signature hash
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
-      // Log the valid webhook payload
-      console.log("req.body.eventNotifications[0].dataChangeEvent.entities[0]",req.body.eventNotifications[0].dataChangeEvent.entities[0])
+      const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
+      console.log(hookType, typeof hookType)
+      //if(hookType === ''){}
       const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
       const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
-      console.log("Valid Webhook invoiceId notification received:", invoiceId);
-      console.log("Valid Webhook invoiceOperation:", invoiceOperation);
+      
       console.log("today is 4.15")
 
-      //
-      // const companyID = oauthClient.getToken().realmId;
-      // const url = oauthClient.environment == 'sandbox' ? OAuthClient.environment.sandbox : OAuthClient.environment.production;
+      
       const {companyID,url}=req.companyDetails
 
 
-      // 在 token 创建后进行 API 调用
+      
       const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
-      //console.log('apiInvoiceResponse:',apiInvoiceResponse)
 
       const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
 
