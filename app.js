@@ -59,12 +59,7 @@ app.get('/', function (req, res) {
 
 app.use((req, res, next) => {
   if (!req.oauthClient) {
-      req.oauthClient = new OAuthClient({
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        environment: process.env.ENVIRONMENT,
-        redirectUri: redirectUri
-      });
+      req.oauthClient = oauthClient
   }
   next();
 });
@@ -163,6 +158,7 @@ app.get('/callback', function (req, res) {
   oauthClient
     .createToken(req.url)
     .then(function (authResponse) {
+      
       oauth2_token_json = JSON.stringify(authResponse.getJson(), null, 2);
       const { access_token, refresh_token } = authResponse.getJson();
       // 创建 JWT
