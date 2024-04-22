@@ -78,7 +78,7 @@ app.get('/authUri', urlencodedParser, function (req, res) {
     redirectUri: redirectUri
   });
 
-
+  req.oauthClient = oauthClient
   const authUri = oauthClient.authorizeUri({
     scope: [OAuthClient.scopes.Accounting],
     state: 'intuit-test',
