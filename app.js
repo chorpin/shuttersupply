@@ -103,6 +103,7 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
       const {companyID,url}=req.companyDetails
+      console.log('req.companyDetails:',req.companyDetails)
 
       const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
      
