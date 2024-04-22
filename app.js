@@ -102,40 +102,37 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
   // Verify the payload with the intuit-signature hash
   var hash = crypto.createHmac('sha256', process.env.WEBHOOK_VERIFIER).update(webhookPayload).digest('base64');
   if (signature === hash) {
-      const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
-      console.log(hookType, typeof hookType)
-      //if(hookType === ''){}
-      const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
-      const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
-      
-      console.log("today is 4.15")
-
-      
       const {companyID,url}=req.companyDetails
 
+      const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
+     
+      if(hookType === 'Invoice'){
+        const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
+        const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
+        
+        console.log("today is 4.15")      
+        const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
 
+        const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
+
+        // 假设每个 Line 中的 SalesItemLineDetail 包含您需要的信息
+        console.log('Invoice Items Details:');
+        invoiceDetails.Invoice.Line.forEach(async line => {
+            // 检查 DetailType 确保它是 SalesItemLineDetail 类型
+            if (line.DetailType === 'SalesItemLineDetail') {
+                const itemDetails = line.SalesItemLineDetail;
+                const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
+                const itemData = JSON.parse(itemResponse.text());
+                const SKU = itemData.Item.Sku
+                
+                
+            }
+          })
+      }else{
+        console.log(`${hookType} Webhook is under construction`)
+      }
       
-      const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
-
-      const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
-
-      // 假设每个 Line 中的 SalesItemLineDetail 包含您需要的信息
-      console.log('Invoice Items Details:');
-      invoiceDetails.Invoice.Line.forEach(async line => {
-          // 检查 DetailType 确保它是 SalesItemLineDetail 类型
-          if (line.DetailType === 'SalesItemLineDetail') {
-              const itemDetails = line.SalesItemLineDetail;
-              const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
-              const itemData = JSON.parse(itemResponse.text());
-              const SKU = itemData.Item.Sku
-              
-              
-          }
-        })
-      // Here you can perform any action needed based on the webhook data
-      // For example, updating a database, logging to a file, etc.
-
-      // Send success response
+      
       return res.status(200).send('SUCCESS');
   } else {
       // If the signature does not match, return 401 (Unauthorized)
