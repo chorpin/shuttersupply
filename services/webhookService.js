@@ -3,13 +3,14 @@ const {verifySignature} = require('../utils/verifySignature')
 
 
 exports.processInvoiceWebhook= async (req)=>{
+    console.log('From - webhookService.js')
     if(!verifySignature(req)){
         throw new Error('Unauthrized - Invalid Signatue')
     }
 
     const {companyID,url}=req.companyDetails
     const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
-    console.log('From - webhookService.js')
+   
     if(hookType === 'Invoice'){
     const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
     const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
