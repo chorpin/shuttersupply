@@ -8,6 +8,9 @@ require('dotenv').config();
  * @type {*|createApplication}
  */
 const express = require('express');
+const webhookRoutes = require('./api/webhook')
+
+
 const enhanceRequestWithCompanyDetails=require('./middlewares/enhanceRequest')
 const jwt =require('jsonwebtoken')
 const app = express();
@@ -82,9 +85,10 @@ app.get('/authUri', urlencodedParser, function (req, res) {
   res.send(authUri);
 });
 
+app.use('/webhook',webhookRoutes)
 
-// 添加用于处理Webhooks通知的路由
-app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(req, res) {
+/*/ 添加用于处理Webhooks通知的路由
+app.post('/webhook', enhanceRequestWithCompanyDetails,async function(req, res) {
   console.log('------Here is the webhook-----')
   var webhookPayload = JSON.stringify(req.body);
   var signature = req.get('intuit-signature');
@@ -127,6 +131,9 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
           })
       }else{
         console.log(`${hookType} Webhook is under construction`)
+
+        //1. Get the invoice number according to the paymentID
+        //2. 
       }
       
       
@@ -136,6 +143,8 @@ app.post('/webhook/invoices', enhanceRequestWithCompanyDetails,async function(re
       return res.status(401).send('FORBIDDEN');
   }
 });
+
+*/
 // 数据库是否正常连接
 app.get('/products', async (req, res) => {
   try {
