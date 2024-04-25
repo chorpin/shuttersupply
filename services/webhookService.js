@@ -4,7 +4,9 @@ const {verifySignature} = require('../utils/verifySignature')
 
 exports.processInvoiceWebhook= async (req)=>{
     console.log('From - webhookService.js')
-    if(!verifySignature(req)){
+    let verifyResult = verifySignature(req)
+    console.log('verifyResult',verifyResult)
+    if(!verifyResult){
         throw new Error('Unauthrized - Invalid Signatue')
     }
 
