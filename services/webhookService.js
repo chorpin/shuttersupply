@@ -5,7 +5,7 @@ const {verifySignature} = require('../utils/verifySignature')
 exports.processInvoiceWebhook= async (req)=>{
     console.log('From - webhookService.js')
     let verifyResult = verifySignature(req)
-    console.log('verifyResult',verifyResult)
+    
     if(!verifyResult){
         throw new Error('Unauthrized - Invalid Signatue')
     }
@@ -14,10 +14,12 @@ exports.processInvoiceWebhook= async (req)=>{
     const hookType = req.body.eventNotifications[0].dataChangeEvent.entities[0].name;
    
     if(hookType === 'Invoice'){
+    console.log('invoice manipulation recieved')
+
     const invoiceId = req.body.eventNotifications[0].dataChangeEvent.entities[0].id;
     const invoiceOperation = req.body.eventNotifications[0].dataChangeEvent.entities[0].operation;
     
-    const apiInvoiceResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
+    const apiInvoiceResponse = await req.oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/invoice/${invoiceId}` });
 
     const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
     // const invoiceDetails = await getInvoiceById(invoiceId);
@@ -28,7 +30,7 @@ exports.processInvoiceWebhook= async (req)=>{
         // 检查 DetailType 确保它是 SalesItemLineDetail 类型
         if (line.DetailType === 'SalesItemLineDetail') {
             const itemDetails = line.SalesItemLineDetail;
-            const itemResponse = await oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
+            const itemResponse = await req.oauthClient.makeApiCall({ url: `${url}v3/company/${companyID}/item/${itemDetails.ItemRef.value}?minorversion=70` });
             const itemData = JSON.parse(itemResponse.text());
             const SKU = itemData.Item.Sku
             

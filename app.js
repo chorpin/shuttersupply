@@ -85,7 +85,10 @@ app.get('/authUri', urlencodedParser, function (req, res) {
   res.send(authUri);
 });
 
-app.use('/webhook',webhookRoutes)
+app.use('/webhook',(req,res,next)=>{
+  req.oauthClient = oauthClient
+  next()
+},webhookRoutes)
 
 /*/ 添加用于处理Webhooks通知的路由
 app.post('/webhook', enhanceRequestWithCompanyDetails,async function(req, res) {
