@@ -85,7 +85,7 @@ app.get('/authUri', urlencodedParser, function (req, res) {
   res.send(authUri);
 });
 
-app.use('/webhook',(req,res,next)=>{
+app.use('/webhook',enhanceRequestWithCompanyDetails,(req,res,next)=>{
   req.oauthClient = oauthClient
   next()
 },webhookRoutes)

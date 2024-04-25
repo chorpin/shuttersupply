@@ -23,7 +23,7 @@ exports.processInvoiceWebhook= async (req)=>{
 
     const invoiceDetails = JSON.parse(apiInvoiceResponse.text());
     // const invoiceDetails = await getInvoiceById(invoiceId);
-
+    console.log()
 
     console.log('Invoice Items Details:');
     invoiceDetails.Invoice.Line.forEach(async line => {
